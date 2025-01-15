@@ -41,7 +41,5 @@ jobs:
           context: .
           platforms: linux/amd64
           tags: |
-            gatlingcorp/dedicated-load-generator:21-jre-headless
-            gatlingcorp/dedicated-load-generator:latest-jre-headless
             gatlingcorp/dedicated-load-generator:latest
             gatlingcorp/dedicated-load-generator:${{ steps.dateTagStep.outputs.tag }}
