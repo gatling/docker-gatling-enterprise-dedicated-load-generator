@@ -27,6 +27,13 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
+      - name: Date tag
+        id: dateTagStep
+        run: |
+          DATE_TAG="$(date '+%Y%m%d%H%M%S')"
+          echo "Computed date tag: $DATE_TAG"
+          echo "tag=$DATE_TAG" >> $GITHUB_OUTPUT
+
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
@@ -37,3 +44,4 @@ jobs:
             gatlingcorp/dedicated-load-generator:21-jre-headless
             gatlingcorp/dedicated-load-generator:latest-jre-headless
             gatlingcorp/dedicated-load-generator:latest
+            gatlingcorp/dedicated-load-generator:${{ steps.dateTagStep.outputs.tag }}
