@@ -26,5 +26,7 @@ EXPOSE 22
 
 COPY /root /
 
+USER gatling-user
+
 ENTRYPOINT ["/docker/docker-entrypoint"]
 CMD ["/usr/sbin/sshd", "-D", "-e"]
